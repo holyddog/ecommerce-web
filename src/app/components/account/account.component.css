@@ -1,0 +1,9 @@
+.sb-menu {
+    color: #757575;
+    display: block;
+    padding: .5rem 1rem;
+}
+
+.sb-menu.active {
+    color: #2196F3;
+}

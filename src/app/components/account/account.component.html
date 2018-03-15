@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex flex-row">
+                <div class="sidebar hidden-md mr-4">
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="sb-menu d-flex v-center" routerLink="/account" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <i class="material-icons pr-2">receipt</i>{{ 'order' | translate }}</a>
+                        </li>
+                        <li>
+                            <a class="sb-menu d-flex v-center" routerLink="/account/address" routerLinkActive="active">
+                                <i class="material-icons pr-2">location_on</i>{{ 'address' | translate }}</a>
+                        </li>
+                        <li>
+                            <a class="sb-menu d-flex v-center" routerLink="/account/setting" routerLinkActive="active">
+                                <i class="material-icons pr-2">settings</i>{{ 'setting' | translate }}</a>
+                        </li>
+                        <!-- <li *ngIf="authenService.user.shop == null">
+                                <a class="sb-menu d-flex v-center" routerLink="/open-shop">
+                                    <i class="material-icons pr-2-5">store</i>{{ 'open_shop' | translate }}</a>
+                            </li>
+                            <li *ngIf="authenService.user.shop != null">
+                                <a class="sb-menu d-flex v-center" routerLink="/open-shop">
+                                    <i class="material-icons pr-2-5">store</i>{{ 'manage_shop' | translate }}</a>
+                            </li> -->
+                        <li>
+                            <a class="sb-menu d-flex v-center" href="javascript:void(0)" (click)="logOut()">
+                                <i class="material-icons pr-2">lock_open</i>{{ 'log_out' | translate }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex lock p-relative paper">
+                    <div class="mb-3 hidden-md-up">
+                        <select class="form-control" [ngModel]="menu" (ngModelChange)="selectMenu($event)">
+                            <option [selected]="menu == '/account'" [value]="'/account'">{{ 'order' | translate }}</option>
+                            <option [selected]="menu == '/account/address'" [value]="'/account/address'">{{ 'address' | translate }}</option>
+                            <option [selected]="menu == '/account/setting'" [value]="'/account/setting'">{{ 'setting' | translate }}</option>
+                            <option [value]="'logout'">{{ 'log_out' | translate }}</option>
+                        </select>
+                    </div>
+                    <div class="container-fluid mb-3">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

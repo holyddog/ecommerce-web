@@ -1,0 +1,100 @@
+<spinner [hidden]="!loading" [text]="loadingText"></spinner>
+<div class="row">
+    <div class="col-md-5">
+        <h2 class="page-sub-title mb-4">{{ 'choose_payment_option' | translate }}</h2>
+        <ul class="list-unstyled mt-3 form-radio">
+            <li *ngFor="let p of payments" class="radio">
+                <label class="d-flex v-center">
+                    <i class="material-icons mr-2">{{p.icon}}</i>
+                    <input type="radio"  name="payment_option" [value]="p.id" [(ngModel)]="payment"/><i class="helper at-0"></i>{{p.name}}
+                </label>
+            </li>
+        </ul>
+        <div *ngIf="false" class="mt-3">
+            <h2 class="page-sub-title mb-4">Payment Info</h2>
+            <form ngNoForm class="mt-3">
+                <div class="form-group">
+                    <label for="txt-email">Card number</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="txt-password">Card holder name</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Expire</label>
+                        <div class="d-flex">
+                            <input class="form-control" type="text">
+                            <div style="width: 25px"></div>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txt-email">Security Code</label>
+                        <input class="form-control" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h2 class="page-sub-title mb-4">{{ 'order_summary' | translate }}</h2>
+        <table class="table mt-3 hidden-md">
+            <thead>
+                <tr>
+                    <th class="text-centert">{{ 'product' | translate }}</th>
+                    <th class="text-centert" style="width: 50px">{{ 'qty' | translate }}</th>
+                    <th class="text-centert" style="width: 200px">{{ 'total' | translate }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of cart.orders">
+                    <td class="align-middle">{{c.item.name}}</td>
+                    <td class="text-center align-middle">{{c.qty}}</td>
+                    <td class="text-center align-middle">{{c.item.price * c.qty | number: '1.2-2'}} ฿</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right align-middle">
+                        <span class="text-black-secondary pr-3">{{ 'total_summary' | translate }}:</span><span class="display-6">{{cart.totalPrice | number: '1.2-2'}} ฿</span>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+        <div class="mb-3 hidden-md-up pt-3 mt-3 pm-border-top">
+            <div *ngFor="let o of cart.orders" class="mb-3 pb-3 d-flex pm-border-bottom">
+                <div class="flex">
+                    <div>{{o.item.name}}</div>
+                    <div class="mt-2">{{o.item.price | number: '1.2-2' }} ฿ x {{o.qty}}</div>
+                    <div class="form-inline mt-2 float-right">
+                        <label class="mr-2 mb-0">{{ 'total' | translate }}: {{o.item.price * o.qty | number: '1.2-2'}} ฿</label>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 text-right">
+                <span class="text-black-secondary pr-3">{{ 'total_summary' | translate }}:</span><span class="display-6">{{cart.totalPrice | number: '1.2-2'}} ฿</span>
+            </div>
+        </div>
+    </div>
+</div>
+<form #paymentForm ngNoForm method="post" [action]="config.PaymentUrl">
+    <input type="hidden" name="version" [value]="env.version" />
+    <input type="hidden" name="merchant_id" [value]="env.merchant_id" />
+    <input type="hidden" name="currency" [value]="env.currency" />
+    <input type="hidden" name="amount" [value]="amount()" />
+    <input type="hidden" name="hash_value" />
+    <input type="hidden" name="order_id" />
+    <input type="hidden" name="payment_option" [value]="env.payment_option" />
+</form>
+<div class="d-flex mt-4">
+    <button class="button button-link d-flex v-center" type="button" (click)="prev()">
+        <i class="material-icons md-18 pr-2">navigate_before</i>
+        <span>{{ 'delivery_address' | translate }}</span>
+    </button>
+    <div class="flex"></div>
+    <button [disabled]="redirect" class="button green" type="button" (click)="complete()">
+        <span>{{ 'place_order' | translate }}</span>
+    </button>
+</div>

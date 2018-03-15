@@ -1,0 +1,71 @@
+<div class="top-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex flex-row-reverse">
+                    <a *ngIf="authenService.user != null" class="p-2" routerLink="/account">{{authenService.user.name}}</a>
+                    <a *ngIf="authenService.user == null" class="p-2" routerLink="/login">{{ 'login' | translate }}</a>
+                    <a class="p-2">News</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<header #header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex">
+                    <div id="logo" class="d-flex v-center">
+                        <div routerLink="/" class="display-5 color-grey">LOGO</div>
+                    </div>
+                    <div class="flex p-3 d-flex v-center">
+                        <div class="form-group p-0 flex">
+                            <input type="text" autocomplete="off">
+                            <i class="bar"></i>
+                        </div>
+                        <a class="ml-2 d-flex v-center h-center">
+                            <i class="material-icons md-dark">search</i>
+                        </a>
+                        <!-- <div class="search-container d-flex">
+                            <input class="search-input flex" type="text" />
+                            <a class="search-button d-flex v-center h-center">
+                                <i class="material-icons">search</i>
+                            </a>
+                        </div> -->
+                    </div>
+                    <div id="cart" class="d-flex flex-row-reverse v-center p-3" routerLink="/checkout">
+                        <div class="counter">{{cart.totalQty}}</div>
+                        <a class="d-flex v-center cart-icon">
+                            <i class="material-icons md-dark">shopping_cart</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main #main>
+    <router-outlet></router-outlet>
+</main>
+<footer class="p-5 text-center">Copyright {{year}} {{config.AppName}}. All Rights Reserved.</footer>
+<div *ngFor="let d of dialog.dialogs" [id]="d.id" class="modal" tabindex="-1" role="dialog">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content {{d.size}}">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{d.title}}</h5>
+                    <i data-dismiss="modal" aria-label="Close" class="material-icons pointer md-dark">close</i>
+                </div>
+                <div class="modal-body">{{d.body}}</div>
+                <div class="modal-footer">
+                    <button *ngFor="let b of d.buttons" type="button" [ngClass]="'button ' + b.cls" (click)="b.handler()">
+                        <span>{{b.text}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<spinner class="fixed" [hidden]="!util.loading" [text]="util.loadingText"></spinner>

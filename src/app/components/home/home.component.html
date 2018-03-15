@@ -1,0 +1,25 @@
+<div class="container mb-30p">
+    <div class="row">
+        <div class="col-md-8">
+            <slider class="paper" [data]="sliders"></slider>
+        </div>
+        <div class="col-md-4">
+            <div class="paper" style="height: 370px"></div>
+        </div>
+    </div>
+</div>
+<div *ngIf="data" class="container">
+    <div class="row">
+        <div *ngFor="let p of data.data" class="col-sm-6 col-md-3">
+            <a class="paper product" [routerLink]="'item/' + p.url + '/' + p.id">
+                <div class="pic">
+                    <img [src]="config.FileUrl + p.picture" />
+                </div>
+                <div class="info">
+                    <div class="title">{{p.name}}</div>
+                    <div class="price">{{p.price | number: '1.2-2'}} ฿</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

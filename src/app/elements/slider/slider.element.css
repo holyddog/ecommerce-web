@@ -1,0 +1,141 @@
+:host {
+    width: 100%;
+    height: 370px;
+    position: relative;
+    display: block;
+}
+
+:host .item {
+    background-color: #FFFFFF;
+    background-position: center 55%;
+    background-size: cover;
+    height: 370px;
+}
+
+:host .item .caption {
+    color: #636363;
+    left: 50px;
+    position: absolute;
+    top: 24%;
+    z-index: 100;
+    padding-right: 8%;
+}
+
+:host .item .caption .slider-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase
+}
+
+:host .item .caption .big-text {
+    font-size: 42px;
+    line-height: 50px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0px 25px;
+    background: #bbbbbb;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: -1px
+}
+
+:host .item .caption .big-text .highlight {
+    color: #f1c40f;
+}
+
+:host .item .caption .excerpt,
+:host .item .caption .small {
+    font-size: 14px;
+    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    padding-left: 23px;
+    background: rgba(0, 0, 0, 0);
+    color: #fff;
+}
+
+:host .item .caption .excerpt span,
+:host .item .caption .small span {
+    background: none repeat scroll 0 0 #bbbbbb;
+    -moz-box-shadow: -1.4em 0 0 #bbbbbb, 1.4em 0 0 #bbbbbb;
+    -webkit-box-shadow: -1.4em 0 0 #bbbbbb, 1.4em 0 0 #bbbbbb;
+    box-shadow: -1.4em 0 0 #bbbbbb, 1.4em 0 0 #bbbbbb;
+    line-height: 336%;
+    padding: 5px 0;
+    display: inline;
+}
+
+:host .item .caption .button-holder {
+    margin: 20px 0 0;
+}
+
+:host .item .caption.bg-color {
+    padding-right: 3%;
+}
+
+:host .item .caption.bg-color .big-text {
+    background: rgba(0, 0, 0, 0);
+    padding: 0px;
+    color: #000;
+}
+
+:host .item .caption.bg-color .excerpt,
+:host .item .caption.bg-color .small {
+    background: rgba(0, 0, 0, 0);
+    padding: 0px;
+    color: #000;
+    margin-top: 0px;
+}
+
+:host .item .caption.bg-color .excerpt span,
+:host .item .caption.bg-color .small span {
+    background: rgba(0, 0, 0, 0);
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: block;
+    line-height: 24px;
+}
+
+:host .full-width-slider {
+    margin-bottom: 30px;
+}
+
+:host .full-width-slider .item {
+    background-color: #FFFFFF;
+    background-position: center 55%;
+    background-size: cover;
+    height: 449px;
+}
+
+:host .full-width-slider .item .caption {
+    position: absolute;
+    top: 11%;
+    z-index: 100;
+}
+
+:host .full-width-slider .item .caption .big-text {
+    font-size: 119px;
+    line-height: 80px;
+    font-family: 'PacificoRegular';
+    color: #fff;
+    background: rgba(0, 0, 0, 0);
+    padding: 0px;
+    text-transform: none;
+}
+
+:host .full-width-slider .item .caption .excerpt {
+    font-size: 60px;
+    line-height: 80px;
+    margin-top: 15px;
+    font-family: 'LatoBold';
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(0, 0, 0, 0);
+    padding: 0px;
+}
+
+:host .full-width-slider .item .caption .button-holder {
+    margin: 31px 0 0;
+}

@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-flex v-center title-bar">
+            <h2 class="page-sub-title">{{ (this.id)? ('edit_address' | translate): ('create_address' | translate) }}</h2>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-md-center">
+    <div class="col-md-8">
+        <form [formGroup]="form" (ngSubmit)="save()" class="mt-3 mb-3">
+            <div class="form-group">
+                <input type="text" formControlName="name">
+                <label class="control-label">{{ 'full_name' | translate }}</label><i class="bar"></i>
+                <div *ngIf="isFieldValid('name')">
+                    <div class="invalid-feedback" *ngIf="name.errors.required">{{ 'msg_name_is_required' | translate }}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea rows="3" formControlName="address"></textarea>
+                <label class="control-label">{{ 'address' | translate }}</label><i class="bar"></i>
+                <div *ngIf="isFieldValid('address')">
+                    <div class="invalid-feedback" *ngIf="address.errors.required">{{ 'msg_address_is_required' | translate }}</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <select [compareWith]="compareId" formControlName="province" (ngModelChange)="onProvinceChange($event)">
+                                    <option *ngFor="let p of provinces" [ngValue]="p">{{p.name}}</option>
+                                </select>
+                    <label class="control-label">{{ 'province' | translate }}</label><i class="bar"></i>
+                    <div *ngIf="isFieldValid('province')">
+                        <div class="invalid-feedback" *ngIf="province.errors.required">{{ 'msg_province_is_required' | translate }}</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <select [compareWith]="compareId" formControlName="district">
+                                    <option *ngFor="let d of districts" [ngValue]="d">{{d.name}}</option>
+                                </select>
+                    <label class="control-label">{{ 'district' | translate }}</label><i class="bar"></i>
+                    <div *ngIf="isFieldValid('district')">
+                        <div class="invalid-feedback" *ngIf="district.errors.required">{{ 'msg_district_is_required' | translate }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input type="text" formControlName="postcode">
+                    <label class="control-label">{{ 'postcode' | translate }}</label><i class="bar"></i>
+                    <div *ngIf="isFieldValid('postcode')">
+                        <div class="invalid-feedback" *ngIf="postcode.errors.required">{{ 'msg_postcode_is_required' | translate }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" formControlName="telephone">
+                <label class="control-label">{{ 'telephone' | translate }}</label><i class="bar"></i>
+                <div *ngIf="isFieldValid('telephone')">
+                    <div class="invalid-feedback" *ngIf="telephone.errors.required">{{ 'msg_telephone_is_required' | translate }}</div>
+                </div>
+            </div>
+            <div class="form-group checkbox">
+                <label>
+                    <input type="checkbox" formControlName="default"/><i class="helper"></i>{{ 'set_as_default' | translate }}
+                </label>
+            </div>
+            <div class="mt-2 mb-2 text-center">
+                <button type="submit" class="button blue mr-1 ml-1">
+                    <span>{{ 'save' | translate }}</span>
+                </button>
+                <button type="button" class="button grey mr-1 ml-1" routerLink="/account/address">
+                    <span>{{ 'cancel' | translate }}</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<spinner [hidden]="!loading"></spinner>

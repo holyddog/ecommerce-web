@@ -1,0 +1,13 @@
+<a *ngIf="currentPage > 1" [href]="href + 1" class="page-btn d-flex v-center h-center">
+    <i class="material-icons md-18">first_page</i>
+</a>
+<a *ngIf="currentPage > 1" [href]="href + (currentPage - 1)" class="page-btn d-flex v-center h-center">
+    <i class="material-icons md-18">navigate_before</i>
+</a>
+<a [href]="href + i" *ngFor="let i of paging" class="page-btn d-flex v-center h-center" [class.active]="i == currentPage">{{i}}</a>
+<a *ngIf="currentPage < lastPage" [href]="href + (currentPage + 1)" class="page-btn d-flex v-center h-center">
+    <i class="material-icons md-18 ">navigate_next</i>
+</a>
+<a *ngIf="currentPage < lastPage" [href]="href + lastPage" class="page-btn d-flex v-center h-center">
+    <i class="material-icons md-18 ">last_page</i>
+</a>

@@ -1,0 +1,16 @@
+.checkout-nav {
+    padding: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+
+.inactive {
+    color: rgba(0, 0, 0, 0.38);
+    cursor: default !important;
+    pointer-events: none;
+}
+
+.active {
+    color: #D32F2F;
+}

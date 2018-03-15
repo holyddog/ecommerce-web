@@ -1,0 +1,35 @@
+.main-pic {
+    min-height: 350px;
+    text-align: center;
+}
+
+.product-price {
+    color: #9E9E9E;
+}
+
+.product-desc {
+    color: #616161;
+}
+
+.pic-scroller {
+    overflow-x: auto;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.sub-pic {
+    height: 80px;
+    width: 80px;
+    margin: 0 0.5rem;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+.sub-pic:first-child {
+    margin-left: 0;
+}
+
+.sub-pic:last-child {
+    margin-right: 0;
+}

@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-5">
+            <div class="p-3 paper">
+                <h2 class="page-sub-title text-center mt-3 mb-3">{{ 'create_a_new_account' | translate }}</h2>
+                <form [formGroup]="form" (ngSubmit)="signUp()">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <!-- <label>{{ 'full_name' | translate }}</label> -->
+                            <input type="text" formControlName="name">
+                            <label class="control-label">{{ 'full_name' | translate }}</label><i class="bar"></i>
+                            <div *ngIf="isFieldValid('name')">
+                                <div class="invalid-feedback" *ngIf="name.errors.required">{{ 'msg_name_is_required' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <!-- <label>{{ 'email' | translate }}</label> -->
+                            <input type="email" formControlName="email">
+                            <label class="control-label">{{ 'email' | translate }}</label><i class="bar"></i>
+                            <div *ngIf="isFieldValid('email')">
+                                <div class="invalid-feedback" *ngIf="email.errors.required">{{ 'msg_email_is_required' | translate }}</div>
+                                <div class="invalid-feedback" *ngIf="email.errors.pattern">{{ 'msg_invalid_email_format' | translate }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label>{{ 'password' | translate }}</label> -->
+                        <input type="password" formControlName="password">
+                        <label class="control-label">{{ 'password' | translate }}</label><i class="bar"></i>
+                        <div class="text-caption">{{ 'msg_min_6_char' | translate }}</div>
+                        <div *ngIf="isFieldValid('password')">
+                            <div class="invalid-feedback" *ngIf="password.errors.required">{{ 'msg_password_is_required' | translate }}</div>
+                            <div class="invalid-feedback" *ngIf="password.errors.minlength">{{ 'msg_password_must_be_6' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- <label>{{ 'confirm_password' | translate }}</label> -->
+                        <input type="password" formControlName="confirmPassword">
+                        <label class="control-label">{{ 'confirm_password' | translate }}</label><i class="bar"></i>
+                        <div *ngIf="isFieldValid('confirmPassword')">
+                            <div class="invalid-feedback" *ngIf="confirmPassword.errors.matchPassword">{{ 'msg_password_not_match' | translate }}</div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 text-center">
+                        <button type="submit" class="button green"><span>{{ 'create_account' | translate }}</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+.order-panel {
+    border: solid 1px rgba(0, 0, 0, 0.12);
+    border-radius: 3px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.order-panel:last-child {
+    margin-bottom: 0;
+}
+
+.t-label {
+    margin-bottom: .25rem;
+    display: block;
+}
+
+.item-name {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1rem;
+    color: #666666;
+}
+
+.item-price {
+    color: #999999;
+}
+
+.sep-line {
+    background-color: rgba(0, 0, 0, 0.12);
+    height: 1px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+}
+
+.product-pic {
+    width: 80px;
+    height: 80px;
+}

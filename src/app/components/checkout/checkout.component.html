@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="paper p-3">
+        <div class="row mb-3">
+            <div class="col-3">
+                <div class="checkout-nav" routerLink="/checkout" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">1<span class="hidden-md">. {{ 'cart' | translate }}</span></div>
+            </div>
+            <div class="col-3">
+                <div class="checkout-nav {{inactive(2)}}" routerLink="/checkout/delivery" routerLinkActive="active">2<span class="hidden-md">. {{ 'delivery_address' | translate }}</span></div>
+            </div>
+            <div class="col-3">
+                <div class="checkout-nav {{inactive(3)}}" routerLink="/checkout/payment" routerLinkActive="active">3<span class="hidden-md">. {{ 'payment' | translate }}</span></div>
+            </div>
+            <div class="col-3">
+                <div class="checkout-nav {{inactive(4)}}" routerLink="/checkout/complete" routerLinkActive="active">4<span class="hidden-md">. {{ 'complete' | translate }}</span></div>
+            </div>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</div>

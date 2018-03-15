@@ -1,0 +1,141 @@
+<spinner [hidden]="!loading"></spinner>
+<div class="row">
+    <div *ngIf="authenService.user == null" class="col-md-5">
+        <h2 class="page-sub-title">{{ 'title_please_login' | translate }}</h2>
+        <form class="mt-3" ngNoForm>
+            <div class="form-group">
+                <label>{{ 'email' | translate }}</label>
+                <input type="email" [(ngModel)]="email" autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>{{ 'password' | translate }}</label>
+                <input type="password" [(ngModel)]="password" autocomplete="off">
+            </div>
+            <div class="mt-2 mb-2 text-center">
+                <button type="button" class="btn btn-primary" [disabled]="submitted" (click)="logIn()">{{ 'login' | translate }}</button>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="authenService.user != null" class="col-md-5">
+        <!-- <div class="d-flex v-center">
+                <h6 class="flex">{{ 'select_address' | translate }}</h6>
+            </div> -->
+        <h2 class="page-sub-title mb-4">{{ 'select_address' | translate }}</h2>
+        <div *ngFor="let a of addresses" class="address-panel d-flex {{(a.default)? 'selected': ''}}" (click)="select(a)">
+            <div style="width: 24px" class="mr-3"><i *ngIf="a.default" class="material-icons color-green">check</i></div>
+            <div class="flex">
+                <div class="mb-2"><b>{{a.name}}</b></div>
+                <div>{{a.address}}</div>
+                <div>{{a.district.name}}, {{a.province.name}} - {{a.postcode}}</div>
+                <div class="mt-2">{{a.telephone}}</div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="authenService.user != null" class="col-md-7">
+        <h2 class="page-sub-title mb-4">{{ 'add_a_new_address' | translate }}</h2>
+        <form [formGroup]="form" (ngSubmit)="save()">
+            <div class="form-group">
+                <input type="text" formControlName="name">
+                <label class="control-label">{{ 'full_name' | translate }}</label><i class="bar"></i>
+                <div *ngIf="isFieldValid('name')">
+                    <div class="invalid-feedback" *ngIf="name.errors.required">{{ 'msg_name_is_required' | translate }}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea rows="3" formControlName="address"></textarea>
+                <label class="control-label">{{ 'address' | translate }}</label><i class="bar"></i>
+                <div *ngIf="isFieldValid('address')">
+                    <div class="invalid-feedback" *ngIf="address.errors.required">{{ 'msg_address_is_required' | translate }}</div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <select [compareWith]="compareId" formControlName="province" (ngModelChange)="onProvinceChange($event)">
+                            <option *ngFor="let p of provinces" [ngValue]="p">{{p.name}}</option>
+                        </select>
+                    <label class="control-label">{{ 'province' | translate }}</label><i class="bar"></i>
+                    <div *ngIf="isFieldValid('province')">
+                        <div class="invalid-feedback" *ngIf="province.errors.required">{{ 'msg_province_is_required' | translate }}</div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <select [compareWith]="compareId" formControlName="district">
+                            <option *ngFor="let d of districts" [ngValue]="d">{{d.name}}</option>
+                        </select>
+                    <label class="control-label">{{ 'district' | translate }}</label><i class="bar"></i>
+                    <div *ngIf="isFieldValid('district')">
+                        <div class="invalid-feedback" *ngIf="district.errors.required">{{ 'msg_district_is_required' | translate }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input type="text" formControlName="postcode">
+                    <label class="control-label">{{ 'postcode' | translate }}</label><i class="bar"></i>
+                    <div *ngIf="isFieldValid('postcode')">
+                        <div class="invalid-feedback" *ngIf="postcode.errors.required">{{ 'msg_postcode_is_required' | translate }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <input type="text" formControlName="telephone">
+                    <label class="control-label">{{ 'telephone' | translate }}</label><i class="bar"></i>
+                    <div *ngIf="isFieldValid('telephone')">
+                        <div class="invalid-feedback" *ngIf="telephone.errors.required">{{ 'msg_telephone_is_required' | translate }}</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- <div class="col-md-6">
+        <h6>Add Another Address</h6>
+        <form ngNoForm>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Name</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <textarea rows="3"></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Province</label>
+                    <select>
+                        </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>District</label>
+                    <select>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Postcode</label>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Telephone</label>
+                    <input type="text">
+                </div>
+            </div>
+        </form>
+    </div> -->
+</div>
+<div class="d-flex mt-4">
+    <button class="button button-link d-flex v-center" type="button" (click)="prev()">
+        <i class="material-icons md-18 pr-2">navigate_before</i>
+        <span>{{ 'cart' | translate }}</span>
+    </button>
+    <div class="flex"></div>
+    <button class="button blue d-flex v-center" type="button" (click)="next()">
+        <span>{{ 'payment' | translate }}</span>
+        <i class="material-icons md-18 pl-2">navigate_next</i>
+    </button>
+</div>

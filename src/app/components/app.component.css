@@ -1,0 +1,49 @@
+#logo {
+    width: 240px;
+    height: 80px;
+}
+
+#logo img {
+    width: 220px;
+    height: 60px;
+}
+
+#cart {
+    width: 200px;
+}
+
+.search-input {
+    border: solid 1px #e2e2e2;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-right-style: none;
+    padding: 5px 10px;
+    font-size: 1rem;
+    line-height: 1.9rem;
+    font-weight: 300;
+}
+
+.search-button {
+    display: block;
+    width: 42px;
+    height: 42px;
+    border: solid 1px #e2e2e2;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #eee;
+}
+
+.cart-icon {
+    height: 30px;
+}
+
+.counter {
+    margin-left: .5rem;
+    background-color: #EF5350;
+    color: #fff;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    border-radius: 50px;
+}

@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="d-flex v-center title-bar">
+            <h2 class="page-sub-title flex">{{ 'order' | translate }}</h2>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="p-3 p-relative">
+            <spinner [hidden]="!loading"></spinner>
+            <div *ngFor="let o of orders" class="order-panel">
+                <div class="d-flex">
+                    <div class="flex lock text-center">
+                        <label class="font-weight-bold">{{ 'order_no' | translate }}</label>
+                        <div>{{o.order_no}}</div>
+                    </div>
+                    <div class="flex lock text-center">
+                        <label class="font-weight-bold">{{ 'order_date' | translate }}</label>
+                        <div>{{o.create_date | date: 'dd/MM/yyyy HH:mm'}}</div>
+                    </div>
+                    <div class="flex lock text-center">
+                        <label class="font-weight-bold">{{ 'payment_option' | translate }}</label>
+                        <div>{{o.payment.name}}</div>
+                    </div>
+                    <div class="flex lock text-center">
+                        <label class="font-weight-bold">{{ 'order_status' | translate }}</label>
+                        <div>{{getStatusName(o)}}</div>
+                    </div>
+                </div>
+                <div class="sep-line"></div>
+                <div *ngFor="let i of o.items" class="d-flex mt-3">
+                    <div class="product-pic mr-3">
+                        <img class="mh-100 mw-100" [src]="config.FileUrl + i.item.picture">
+                    </div>
+                    <div class="flex">
+                        <div class="mb-2 item-name">{{i.item.name}}</div>
+                        <div class="d-flex">
+                            <div class="flex color-red">x {{i.qty}}</div>
+                            <div class="flex item-price">{{i.item.price | number: '1.2-2'}} ฿</div>
+                        </div>
+                        <div *ngIf="i.tracking && i.tracking.length > 0" class="mt-2">
+                            <label class="t-label">{{ 'tracking_no' | translate }}:</label>
+                            <div *ngFor="let t of i.tracking">
+                                <a>{{t}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

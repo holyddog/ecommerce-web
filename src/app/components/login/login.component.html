@@ -1,0 +1,27 @@
+<spinner [hidden]="!blocked"></spinner>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-5">
+            <div class="paper p-3">
+                <h2 class="page-sub-title text-center mt-3 mb-3">{{ 'login_to' | translate }} {{appName}}</h2>
+                <form [formGroup]="form" class="mt-3" (ngSubmit)="logIn()">
+                    <div class="form-group">
+                        <input type="email" formControlName="email" autocomplete="off">
+                        <label class="control-label">{{ 'email' | translate }}</label><i class="bar"></i>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" formControlName="password" autocomplete="off">
+                        <label class="control-label">{{ 'รหัสผ่าน' | translate }}</label><i class="bar"></i>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="button blue" [disabled]="submitted && form.valid"><span>{{ 'login' | translate }}</span></button>
+                    </div>
+                    <div class="form-group mb-3 text-center">
+                        <span class="pr-1">{{ 'not_a_member' | translate }}</span>
+                        <a routerLink="/signup">{{ 'sign_up_now' | translate }}</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

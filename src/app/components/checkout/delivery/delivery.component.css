@@ -1,0 +1,7 @@
+.addr-item {
+    cursor: pointer;
+}
+
+.addr-item.selected {
+    background-color: #E8F5E9;
+}

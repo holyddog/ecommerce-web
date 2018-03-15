@@ -1,0 +1,17 @@
+<spinner [hidden]="!loading"></spinner>
+<div #owl class="owl-carousel owl-inner-nav owl-ui-sm">
+    <div *ngFor="let i of data" class="item" [style.backgroundImage]="'url(' + (config.FileUrl + i.image) + ')'">
+        <div class="container-fluid">
+            <div class="caption bg-color vertical-center text-left">
+                <div class="slider-header fadeInDown-1 kanit">{{i.header}}</div>
+                <div class="big-text fadeInDown-1 kanit">{{i.text}}</div>
+                <div class="excerpt fadeInDown-2 kanit hidden-xs">
+                    <span>{{i.caption}}</span>
+                </div>
+                <div class="button-holder fadeInDown-3">
+                    <a [href]="i.button.url" class="button blue text-uppercase"><span>{{i.button.text}}</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

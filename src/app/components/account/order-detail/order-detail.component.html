@@ -1,0 +1,134 @@
+<div *ngIf="order != null" class="container pt-3 pb-3 paper">
+    <div class="d-flex justify-content-end v-center">
+        <h4 class="text-uppercase mr-auto mb-0">{{ 'order_detail' | translate }}</h4>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container mt-3 p-3 border-line">
+                <div class="row mb-2">
+                    <div class="col-md-4">
+                        <label class="mb-0">{{ 'order_no' | translate }}:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div>{{order.order_no}}</div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4">
+                        <label class="mb-0">{{ 'order_date' | translate }}:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div>{{order.create_date | date: 'dd/MM/yyyy HH:mm'}}</div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4">
+                        <label class="mb-0">{{ 'order_short_info' | translate }}:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div>{{order.total_qty}} {{ 'items' | translate }} - {{order.total_price | number: '1.2-2'}} ฿</div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-4">
+                        <label class="mb-0">{{ 'payment_option' | translate }}:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div>{{order.payment.name}}</div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-md-4">
+                        <label class="mb-0">Payment Status:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div *ngIf="order.payment.complete">Paid</div>
+                        <div *ngIf="!order.payment.complete">Unpaid</div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="container border-line mt-3 pt-3 pb-3">
+                <h6 class="mb-3">{{ 'delivery_address' | translate }}</h6>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-1">{{order.delivery_address.name}}</div>
+                        <div>{{order.delivery_address.address}}</div>
+                        <div>{{order.delivery_address.district.name}} - {{order.delivery_address.province.name}} - {{order.delivery_address.postcode}}</div>
+                        <div class="mt-1">{{order.delivery_address.telephone}}</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="container border-line mt-3 pt-3 pb-3">
+                <h6 class="mb-3">Packages</h6>
+                <div class="row">
+                    <div class="col-md-12">
+                    </div>
+                </div>
+            </div> -->
+            <div class="container border-line mt-3 pt-3 pb-3">
+                <h6 class="mb-3">{{ 'order_summary' | translate }}</h6>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table mb-0 hidden-md">
+                            <thead>
+                                <tr>
+                                    <th style="width: 120px"></th>
+                                    <th class="text-center kanit">{{ 'product' | translate }}</th>
+                                    <th class="text-center kanit" style="width: 50px">{{ 'quantity' | translate }}</th>
+                                    <th class="text-center kanit" style="width: 200px">{{ 'total' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let c of order.items">
+                                    <td class="text-center align-middle">
+                                        <div class="cart-pic">
+                                            <img class="mh-100 mw-100" [src]="config.FileUrl + c.item.picture">
+                                        </div>
+                                    </td>
+                                    <td class="align-middle"><a routerLink="/item/{{c.item.id}}">{{c.item.name}}</a></td>
+                                    <td class="text-center align-middle">{{c.qty}}</td>
+                                    <td class="text-center align-middle">{{c.item.price * c.qty | number: '1.2-2'}} ฿</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="2" class="text-center align-middle">
+                                        <span class="text-black-secondary pr-3 kanit">{{ 'total_summary' | translate }}:</span><span class="txt-5">{{order.total_price | number: '1.2-2'}} ฿</span>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class="mb-3 hidden-md-up pt-3 pm-border-top">
+                            <div *ngFor="let o of order.items" class="mb-3 pb-3 d-flex pm-border-bottom">
+                                <div class="flex">
+                                    <a routerLink="/item/{{o.item.id}}">{{o.item.name}}</a>
+                                    <div class="mt-2">{{o.item.price | number: '1.2-2' }} ฿ x {{o.qty}}</div>
+                                    <div class="form-inline mt-2 float-right">
+                                        <label class="mr-2 mb-0">{{ 'total' | translate }}: {{o.item.price * o.qty | number: '1.2-2'}} ฿</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3 text-right">
+                                <span class="text-black-secondary pr-3 kanit">{{ 'total_summary' | translate }}:</span><span class="txt-5">{{order.total_price | number: '1.2-2'}} ฿</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <dialog>
+    <dialog-title>Title</dialog-title>
+    <dialog-body>
+        <p>Consequuntur suscipit exercitation per repellendus doloribus! Perspiciatis hymenaeos. Nostrud ducimus etiam perspiciatis incidunt montes per, parturient, a aut diam voluptas assumenda eum, rerum mollitia. Eget eros non distinctio molestie, qui,
+            nihil cupiditate soluta. Ipsam. Voluptate habitant morbi! Ab repellendus? Dignissimos do sequi, dignissimos enim neque, lacus, ut excepturi tempor nec? Aptent ex! Beatae sapien. Mollit pharetra hymenaeos, malesuada turpis sollicitudin. Harum
+            et eget similique eleifend excepteur penatibus mollis consequat. Platea, dolore risus? Tempor netus iste tristique? Eros numquam ridiculus dolorem porta. Ipsum odit aliquam pulvinar commodi nihil saepe quae repellat, eu orci expedita facere
+            interdum, quo, dolorem pellentesque, facilisis, laoreet.</p>
+    </dialog-body>
+    <dialog-footer>
+        <button type="button" class="btn btn-primary mr-2">OK</button>
+        <button type="button" class="btn btn-secondary">Cancel</button>
+    </dialog-footer>
+</dialog> -->
