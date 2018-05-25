@@ -522,6 +522,10 @@ input[type=number]::-webkit-outer-spin-button {
     color: #EF5350 !important;
 }
 
+.color-orange {
+    color: #FFA726 !important;
+}
+
 .lead {
     font-size: 1.25rem;
     font-weight: 300;
@@ -563,6 +567,11 @@ input[type=number]::-webkit-outer-spin-button {
     line-height: 1.2rem;
 }
 
+.display-7 {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
 .list-unstyled {
     list-style: none;
     padding: 0;
@@ -570,6 +579,18 @@ input[type=number]::-webkit-outer-spin-button {
 
 .at-0 {
     top: 0 !important;
+}
+
+.float-left {
+    float: left !important;
+}
+
+.float-right {
+    float: right !important;
+}
+
+.float-none {
+    float: none !important;
 }
 
 .table {
@@ -627,6 +648,10 @@ input[type=number]::-webkit-outer-spin-button {
 
 .m-center {
     margin: 0 auto;
+}
+
+.bl {
+    border-left: solid 1px rgba(0, 0, 0, 0.12);
 }
 
 .modal-content {
@@ -738,7 +763,7 @@ input[type=number]::-webkit-outer-spin-button {
     position: relative;
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
-    padding: 15px 15px 0px 15px;
+    padding: 15px;
 }
 
 .modal-footer {
@@ -851,6 +876,14 @@ label.required:after {
 
 .jq-icon-success {
     background-image: url('../images/ic_check.png');
+}
+
+.gj-datepicker {
+    width: 100% !important;
+}
+
+.gj-datepicker-bootstrap span[role=right-icon] .input-group-text .gj-icon {
+    top: 4px;
 }
 
 .mb-30p {

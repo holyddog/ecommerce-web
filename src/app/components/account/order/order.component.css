@@ -1,11 +1,22 @@
 .order-panel {
     border: solid 1px rgba(0, 0, 0, 0.12);
     border-radius: 3px;
-    padding: 1rem;
     margin-bottom: 1rem;
 }
 
 .order-panel:last-child {
+    margin-bottom: 0;
+}
+
+.order-panel .header {
+    background: #f3f3f3;
+}
+
+.order-panel .order-item {
+    margin-bottom: 1rem;
+}
+
+.order-panel .order-item:last-child {
     margin-bottom: 0;
 }
 
@@ -28,10 +39,6 @@
 .sep-line {
     background-color: rgba(0, 0, 0, 0.12);
     height: 1px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: -1rem;
-    margin-right: -1rem;
 }
 
 .product-pic {

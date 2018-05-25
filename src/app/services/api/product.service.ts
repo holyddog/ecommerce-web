@@ -13,10 +13,23 @@ import { ProductModel } from '../../models/product.model';
 export class ProductService {
     constructor(private http: HttpClient) { }
 
-    find(params: any = {}, page: number = 0): Promise<any> {
+    find(q: string = null, cat: string = null, page: number = 0): Promise<any> {
+        var params = {};
         if (page > 0) {
-            params.page = page;
-            params.size = Config.PageSize;
+            Object.assign(params, {
+                page: page,
+                size: 100
+            });
+        }
+        if (q && q.trim().length > 0) {
+            Object.assign(params, {
+                q: q.trim()
+            });
+        }
+        if (cat) {
+            Object.assign(params, {
+                cat: cat
+            });
         }
 
         let httpParams: HttpParams = new HttpParams();

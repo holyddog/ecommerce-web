@@ -60,6 +60,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
         this.cart.load();
         this.authenService.load();
+
+        this.route.queryParams.forEach((params: Params) => {
+            this.q = params['q'];
+        });
     }
 
     ngAfterViewInit() {
@@ -87,8 +91,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     search(): void {
-        if (this.q.trim().length > 0) {
-            window.location.href = '/search?q=' + this.q;
+        if (this.q && this.q.trim().length > 0) {
+            this.router.navigate(['/search'], { queryParams: { q: this.q } });
+        }
+        else {
+            this.router.navigate(['/']);
         }
     }
 }

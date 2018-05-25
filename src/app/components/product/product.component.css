@@ -33,3 +33,22 @@
 .sub-pic:last-child {
     margin-right: 0;
 }
+
+.input-qty-container {
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.input-qty {
+    width: 100%;
+}
+
+@media (min-width: 992px) {
+    .input-qty-container {
+        margin-bottom: 0;
+        width: auto;
+    }
+    .input-qty {
+        width: 80px;
+    }
+}

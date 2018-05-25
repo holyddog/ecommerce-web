@@ -1,4 +1,4 @@
-<div class="container mb-30p">
+<!-- <div class="container mb-30p">
     <div class="row">
         <div class="col-md-8">
             <slider class="paper" [data]="sliders"></slider>
@@ -7,10 +7,29 @@
             <div class="paper" style="height: 370px"></div>
         </div>
     </div>
+</div> -->
+<div *ngIf="categoryData" class="container mb-30p">
+    <div class="row d-none d-md-block">
+        <div class="col-md-12 d-flex h-center">
+            <a (click)="findProductByCategory(null)" href="javascript:void(0)" class="cat-link" [class.active]="category == null">{{ 'all' | translate }}</a>
+            <a (click)="findProductByCategory(c.id)" href="javascript:void(0)" *ngFor="let c of categoryData.sub_categories" class="cat-link" [class.active]="c.id == category">{{c.name}}</a>
+        </div>
+    </div>
+    <div class="row d-md-none">
+        <div class="col-md-12">
+            <div class="form-group p-0">
+                <select (change)="findProductByCategory($event.target.value)">
+                    <option [value]="null">{{ 'all' | translate }}</option>
+                    <option *ngFor="let c of categoryData.sub_categories" [value]="c.id">{{c.name}}</option>
+                </select>
+                <i class="bar"></i>
+            </div>
+        </div>
+    </div>
 </div>
-<div *ngIf="data" class="container">
+<div *ngIf="productData" class="container">
     <div class="row">
-        <div *ngFor="let p of data.data" class="col-sm-6 col-md-3">
+        <div *ngFor="let p of productData.data" class="col-sm-6 col-md-3">
             <a class="paper product" [routerLink]="'item/' + p.url + '/' + p.id">
                 <div class="pic">
                     <img [src]="config.FileUrl + p.picture" />

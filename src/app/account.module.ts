@@ -12,6 +12,8 @@ import { SettingComponent } from './components/account/setting/setting.component
 import { OrderDetailComponent } from './components/account/order-detail/order-detail.component';
 import { AddressFormComponent } from './components/account/address-form/address-form.component';
 
+import { BankTransferElement } from './elements/bank-transfer/bank-transfer.element';
+
 import { AuthenGuardService } from './services/api/authen-guard.service';
 
 @NgModule({
@@ -50,7 +52,16 @@ import { AuthenGuardService } from './services/api/authen-guard.service';
             }
         ])
     ],
-    declarations: [AccountComponent, OrderComponent, AddressComponent, SettingComponent, OrderDetailComponent, AddressFormComponent],
+    declarations: [
+        AccountComponent, 
+        OrderComponent, 
+        AddressComponent, 
+        SettingComponent, 
+        OrderDetailComponent, 
+        AddressFormComponent, 
+        
+        BankTransferElement
+    ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     providers: [AuthenGuardService]
 })

@@ -1,13 +1,15 @@
 <div class="top-nav">
     <div class="container">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-12">
-                <div class="d-flex flex-row-reverse">
-                    <a *ngIf="authenService.user != null" class="p-2" routerLink="/account">{{authenService.user.name}}</a>
-                    <a *ngIf="authenService.user == null" class="p-2" routerLink="/login">{{ 'login' | translate }}</a>
-                    <a class="p-2">News</a>
-                </div>
             </div>
+        </div> -->
+        <div class="d-flex">
+            <div class="flex"></div>
+            <a routerLink="/confirm-payment">{{ 'confirm_payment' | translate }}</a>
+            <a *ngIf="authenService.user != null" routerLink="/account">{{authenService.user.name}}</a>
+            <a *ngIf="authenService.user == null" routerLink="/login">{{ 'login' | translate }}</a>
+            <!-- <a>News</a> -->
         </div>
     </div>
 </div>
@@ -18,14 +20,15 @@
             <div class="col-md-12">
                 <div class="d-flex">
                     <div id="logo" class="d-flex v-center">
-                        <div routerLink="/" class="display-5 color-grey">LOGO</div>
+                        <a routerLink="/" class="display-5 color-grey">LOGO</a>
                     </div>
-                    <div class="flex p-3 d-flex v-center">
+                    <div class="flex d-lg-none"></div>
+                    <div class="flex p-3 v-center d-none d-lg-flex">
                         <div class="form-group p-0 flex">
-                            <input type="text" autocomplete="off">
+                            <input type="text" [(ngModel)]="q" autocomplete="off" (keypress)="trackQuery($event)">
                             <i class="bar"></i>
                         </div>
-                        <a class="ml-2 d-flex v-center h-center">
+                        <a class="ml-2 d-flex v-center h-center" (click)="search()">
                             <i class="material-icons md-dark">search</i>
                         </a>
                         <!-- <div class="search-container d-flex">

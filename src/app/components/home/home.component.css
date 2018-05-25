@@ -1,0 +1,10 @@
+.cat-link {
+    font-size: 1.1rem;
+    font-weight: 300;
+    padding: 0.5rem !important;
+    margin: 0.25rem !important;
+}
+
+.cat-link.active {
+    border-bottom: solid 2px #EF5350;
+}

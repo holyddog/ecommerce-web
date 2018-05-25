@@ -18,13 +18,13 @@
                     <div class="product-price display-6 mt-3">{{product.price | number: '1.2-2'}} ฿</div>
                     <div class="mt-4"><b>{{ 'description' | translate }}</b></div>
                     <div class="product-desc mt-3" [innerHTML]="product.description"></div>
-                    <div class="mt-4 d-flex v-center">
-                        <div class="form-group p-0 mr-3">
-                            <input style="width: 80px" class="text-center" type="number" [(ngModel)]="qty" (blur)="checkNumber($event.srcElement.value)">
+                    <div class="mt-4 d-lg-flex v-center">
+                        <div class="form-group p-0 input-qty-container">
+                            <input class="input-qty text-center" type="number" [(ngModel)]="qty" (blur)="checkNumber($event.srcElement.value)">
                             <i class="bar"></i>
                         </div>
-                        <button type="button" class="button grey mr-3 d-flex v-center h-center" (click)="addCart()"><i class="material-icons md-18 pr-2">add_shopping_cart</i><span class="hidden-md">{{ 'add_to_cart' | translate }}</span></button>
-                        <button type="button" class="button red" (click)="buyNow()"><span>{{ 'buy_now' | translate }}</span></button>
+                        <button type="button" class="button grey mr-3 d-flex v-center h-center input-qty-container" (click)="addCart()"><i class="material-icons md-18 pr-2">add_shopping_cart</i><span class="hidden-md">{{ 'add_to_cart' | translate }}</span></button>
+                        <button type="button" class="button red input-qty-container" (click)="buyNow()"><span>{{ 'buy_now' | translate }}</span></button>
                     </div>
                 </div>
             </div>

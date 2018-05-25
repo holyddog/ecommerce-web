@@ -11,6 +11,7 @@ import { SliderElement } from '../../elements/slider/slider.element';
 
 import { CategoryService } from '../../services/api/category.service';
 import { ProductService } from '../../services/api/product.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 const HOME_PRODUCT_KEY = makeStateKey('home_product');
 
@@ -27,17 +28,23 @@ export class HomeComponent implements OnInit {
 
     sliders: any[] = [];
 
-    newProducts: ProductModel[] = [];
-    bestProducts: ProductModel[] = [];
-    data: any;
+    productData: any;
+    categoryData: any;
+    category: string;
 
-    constructor(@Inject(PLATFORM_ID) private platformId: Object, private state: TransferState, public categoryService: CategoryService, private productService: ProductService) { }
+    constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: ActivatedRoute, private state: TransferState, public categoryService: CategoryService, private productService: ProductService) { }
 
     ngOnInit() {
-        this.productService.find()
-            .then(data => {
-                this.data = data;
-            });
+        this.route.queryParams.forEach((params: Params) => {
+            this.productService.find(null, null)
+                .then(data => {
+                    this.productData = data;
+                    return this.categoryService.findById('dolls');
+                })
+                .then(data => {
+                    this.categoryData = data;
+                });
+        });
 
         // this.data = this.state.get(HOME_PRODUCT_KEY, null as any);
 
@@ -60,12 +67,23 @@ export class HomeComponent implements OnInit {
         //         });
         // }
 
-        if (isPlatformBrowser(this.platformId)) {
-            this.productService.findSliders()  
-                .then(data => {
-                    this.sliders = data;
-                    this.slider.exec();
-                });
+        // if (isPlatformBrowser(this.platformId)) {
+        //     this.productService.findSliders()  
+        //         .then(data => {
+        //             this.sliders = data;
+        //             this.slider.exec();
+        //         });
+        // }
+    }
+
+    findProductByCategory(category: string) {
+        if (category == "null") {
+            category = null;
         }
+        this.category = category;
+        this.productService.find(null, this.category)
+                .then(data => {
+                    this.productData = data;
+                });
     }
 }

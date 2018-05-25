@@ -2,6 +2,7 @@
 <div *ngIf="order != null" class="row justify-content-md-center">
     <div class="col-md-12">
         <h2 class="page-sub-title color-green d-flex p-3 v-center h-center"><i class="material-icons pr-2">check_circle</i>{{ 'order_complete_thank_you' | translate }}</h2>
+        <div *ngIf="order.payment.id == 3" class="text-center">กรุณาโอนเงินผ่านบัญชีธนาคาร (<a href="javascript:void(0)" (click)="showBank()">ข้อมูลบัญชีธนาคาร</a>)</div>
         <div class="container-fluid mt-3">
             <div class="row border-line p-3">
                 <div class="col-md-3">
@@ -62,6 +63,47 @@
                             </tr>
                         </tfoot>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog_order_complete" class="modal" tabindex="-1" role="dialog">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content lg">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ 'bank_transfer' | translate }}</h5>
+                    <i data-dismiss="modal" aria-label="Close" class="material-icons pointer md-dark">close</i>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px"></th>
+                                <th class="text-center">{{ 'bank_name' | translate }}</th>
+                                <th class="text-center">{{ 'account_no' | translate }}</th>
+                                <th class="text-center">{{ 'account_name' | translate }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ba of bankAccs">
+                                <td class="align-middle">
+                                    <div class="bank-pic">
+                                        <img class="mh-100 mw-100" [src]="config.FileUrl + ba.bank.logo">
+                                    </div>
+                                </td>
+                                <td class="align-middle">{{ba.bank.name}}</td>
+                                <td class="align-middle">{{ba.account_no}}</td>
+                                <td class="align-middle">{{ba.name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="button blue" data-dismiss="modal">
+                        <span>{{ 'ok' | translate }}</span>
+                    </button>
                 </div>
             </div>
         </div>

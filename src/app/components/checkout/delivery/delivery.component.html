@@ -16,12 +16,21 @@
             </div>
         </form>
     </div>
-    <div *ngIf="authenService.user != null" class="col-md-5">
+    <div *ngIf="authenService.user != null" class="col-md-5 mb-4">
         <!-- <div class="d-flex v-center">
                 <h6 class="flex">{{ 'select_address' | translate }}</h6>
             </div> -->
-        <h2 class="page-sub-title mb-4">{{ 'select_address' | translate }}</h2>
-        <div *ngFor="let a of addresses" class="address-panel d-flex {{(a.default)? 'selected': ''}}" (click)="select(a)">
+        <h2 class="page-sub-title mb-4">
+            <div class="form-radio p-0">
+                <div class="radio m-0">
+                    <label class="d-flex v-center">
+                        <input type="radio" name="delivery_option" [value]="1" [(ngModel)]="deliveryOption" />
+                        <i class="helper at-0"></i> {{ 'select_address' | translate }}
+                    </label>
+                </div>
+            </div>
+        </h2>
+        <div [ngClass]="(deliveryOption != 1)? 'disabled': ''" *ngFor="let a of addresses" class="address-panel d-flex {{(a.default)? 'selected': ''}}" (click)="select(a)">
             <div style="width: 24px" class="mr-3"><i *ngIf="a.default" class="material-icons color-green">check</i></div>
             <div class="flex">
                 <div class="mb-2"><b>{{a.name}}</b></div>
@@ -31,9 +40,18 @@
             </div>
         </div>
     </div>
-    <div *ngIf="authenService.user != null" class="col-md-7">
-        <h2 class="page-sub-title mb-4">{{ 'add_a_new_address' | translate }}</h2>
-        <form [formGroup]="form" (ngSubmit)="save()">
+    <div *ngIf="authenService.user != null" class="col-md-7 mb-4">
+        <h2 class="page-sub-title mb-4">
+            <div class="form-radio p-0">
+                <div class="radio m-0">
+                    <label class="d-flex v-center">
+                        <input type="radio" name="delivery_option" [value]="2" [(ngModel)]="deliveryOption"/>
+                        <i class="helper at-0"></i> {{ 'add_a_new_address' | translate }}
+                    </label>
+                </div>
+            </div>
+        </h2>
+        <form [ngClass]="(deliveryOption != 2)? 'disabled': ''" [formGroup]="form" (ngSubmit)="save()">
             <div class="form-group">
                 <input type="text" formControlName="name">
                 <label class="control-label">{{ 'full_name' | translate }}</label><i class="bar"></i>
@@ -85,6 +103,11 @@
                         <div class="invalid-feedback" *ngIf="telephone.errors.required">{{ 'msg_telephone_is_required' | translate }}</div>
                     </div>
                 </div>
+            </div>
+            <div class="form-group checkbox">
+                <label>
+                    <input type="checkbox" formControlName="saveAddress" /><i class="helper"></i>{{ 'save_this_address' | translate }}
+                </label>
             </div>
         </form>
     </div>

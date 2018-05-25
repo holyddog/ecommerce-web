@@ -1,7 +1,7 @@
 body {
     font-family: 'Kanit', sans-serif;
     color: #212121;
-    background-color: #f3f3f3;
+    /* background-color: #f3f3f3; */
     font-size: .9rem;
     font-weight: 300;
 }
@@ -41,6 +41,10 @@ form {
     height: 36px;
 }
 
+.top-nav a {
+    padding: .5rem 1rem;
+}
+
 header {
     -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
@@ -70,6 +74,11 @@ main {
     -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     -ms-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.disabled {
+    opacity: .5;
+    pointer-events: none;
 }
 
 slider .owl-prev,
@@ -126,9 +135,16 @@ slider:hover .owl-next:hover {
 
 .page-title {
     font-weight: 300;
-    font-size: 2.5rem;
-    line-height: 2.5rem;
+    font-size: 1.75rem;
+    line-height: 2rem;
     color: #757575;
+}
+
+@media (min-width: 992px) {
+    .page-title {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+    }
 }
 
 .page-sub-title {

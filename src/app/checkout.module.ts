@@ -43,7 +43,7 @@ import { CheckoutGuardService } from './services/shared/checkout-guard.service';
                     {
                         path: 'complete',
                         component: CompleteComponent,
-                        canActivate: [CheckoutGuardService]
+                        // canActivate: [CheckoutGuardService]
                     }
                 ]
             },

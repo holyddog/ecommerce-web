@@ -10,39 +10,51 @@
         <div class="p-3 p-relative">
             <spinner [hidden]="!loading"></spinner>
             <div *ngFor="let o of orders" class="order-panel">
-                <div class="d-flex">
-                    <div class="flex lock text-center">
-                        <label class="font-weight-bold">{{ 'order_no' | translate }}</label>
-                        <div>{{o.order_no}}</div>
+                <div class="d-md-flex v-center">
+                    <div class="flex display-7 pl-2 pr-2">#{{o.order_no}}</div>
+                    <a *ngIf="!o.status.paid && o.payment.id == 3" class="d-flex v-center bl p-2" href="javascript:void(0)" (click)="showPayment()">
+                        <i class="material-icons md-18 pr-2">reply</i>{{ 'bank_info_and_payment' | translate }}
+                    </a>
+                    <a class="d-flex v-center bl p-2" href="javascript:void(0)">
+                        <i class="material-icons md-18 pr-2">delete</i>{{ 'delete' | translate }}
+                    </a>
+                </div>
+                <div class="sep-line"></div>
+                <div class="d-md-flex header">
+                    <div class="flex p-3 lock text-center">
+                        <label class="font-weight-bold">{{ 'total_summary' | translate }}</label>
+                        <div>{{o.total_price | number: '1.2-2'}} ฿</div>
                     </div>
-                    <div class="flex lock text-center">
+                    <div class="flex p-3 lock text-center">
                         <label class="font-weight-bold">{{ 'order_date' | translate }}</label>
                         <div>{{o.create_date | date: 'dd/MM/yyyy HH:mm'}}</div>
                     </div>
-                    <div class="flex lock text-center">
+                    <div class="flex p-3 lock text-center">
                         <label class="font-weight-bold">{{ 'payment_option' | translate }}</label>
                         <div>{{o.payment.name}}</div>
                     </div>
-                    <div class="flex lock text-center">
+                    <div class="flex p-3 lock text-center">
                         <label class="font-weight-bold">{{ 'order_status' | translate }}</label>
-                        <div>{{getStatusName(o)}}</div>
+                        <div class="d-flex v-center h-center" [ngClass]="(o.status.paid)? 'color-green': 'color-orange'"><i *ngIf="o.status.paid" class="material-icons md-18 pr-2">done</i><i *ngIf="!o.status.paid" class="material-icons md-18 pr-2">warning</i>{{getStatusName(o)}}</div>
                     </div>
                 </div>
                 <div class="sep-line"></div>
-                <div *ngFor="let i of o.items" class="d-flex mt-3">
-                    <div class="product-pic mr-3">
-                        <img class="mh-100 mw-100" [src]="config.FileUrl + i.item.picture">
-                    </div>
-                    <div class="flex">
-                        <div class="mb-2 item-name">{{i.item.name}}</div>
-                        <div class="d-flex">
-                            <div class="flex color-red">x {{i.qty}}</div>
-                            <div class="flex item-price">{{i.item.price | number: '1.2-2'}} ฿</div>
+                <div class="p-3">
+                    <div *ngFor="let i of o.items" class="d-flex order-item">
+                        <div class="product-pic mr-3">
+                            <img class="mh-100 mw-100" [src]="config.FileUrl + i.item.picture">
                         </div>
-                        <div *ngIf="i.tracking && i.tracking.length > 0" class="mt-2">
-                            <label class="t-label">{{ 'tracking_no' | translate }}:</label>
-                            <div *ngFor="let t of i.tracking">
-                                <a>{{t}}</a>
+                        <div class="flex">
+                            <div class="mb-2 item-name">{{i.item.name}}</div>
+                            <div class="d-flex">
+                                <div class="flex color-red">x {{i.qty}}</div>
+                                <div class="flex item-price">{{i.item.price | number: '1.2-2'}} ฿</div>
+                            </div>
+                            <div *ngIf="i.tracking && i.tracking.length > 0" class="mt-2">
+                                <label class="t-label">{{ 'tracking_no' | translate }}:</label>
+                                <div *ngFor="let t of i.tracking">
+                                    <a>{{t}}</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -51,3 +63,4 @@
         </div>
     </div>
 </div>
+<app-confirm-payment #bankTransfer></app-confirm-payment>

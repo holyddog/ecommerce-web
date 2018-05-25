@@ -3,6 +3,8 @@ export const LANG_TH_TRANS = {
     'login': 'เข้าสู่ระบบ',
     'thailand_post_full_name': 'บริษัท ไปรษณีย์ไทย จำกัด',
     'search_for_products': 'ค้นหาสินค้า...',
+    'search_results_for': 'ผลการค้นหาคำว่า',
+    'all': 'ทั้งหมด',
 
     'product_category': 'หมวดหมู่สินค้า',
     'new_products': 'สินค้ามาใหม่',
@@ -24,6 +26,7 @@ export const LANG_TH_TRANS = {
     'sign_up_now': 'สมัครเลย',
     'create_account': 'สร้างบัญชีผู้ใช้งาน',
     'create_a_new_account': 'สร้างบัญชีผู้ใช้งานใหม่',
+    'confirm_payment': 'แจ้งชำระเงิน',
 
     'description': 'คำอธิบาย',
     'add_to_cart': 'เพิ่มไปยังรถเข็น',
@@ -61,6 +64,7 @@ export const LANG_TH_TRANS = {
     'msg_postcode_is_required': 'กรุณาเลือกรหัสไปรษณีย์',
     'msg_telephone_is_required': 'กรุณาระบุเบอร์โทรศัพท์',
     'msg_credit_card_rejected': 'บัตรของคุณถูกปฏิเสธ ไม่สามารถทำการชำระเงินได้',
+    'msg_amount_is_required': 'กรุณาระบุยอดโอน',
 
     'loading': 'กำลังโหลดข้อมูล...',
     'loading_logging_in': 'กำลังเข้าสู่ระบบ...',
@@ -69,6 +73,7 @@ export const LANG_TH_TRANS = {
     'cancel': 'ยกเลิก',
     'confirm': 'ยืนยัน',
     'alert': 'แจ้งเตือน',
+    'close': 'ปิด',
 
     'order': 'รายการสั่งซื้อ',
     'address': 'ที่อยู่',
@@ -97,10 +102,19 @@ export const LANG_TH_TRANS = {
     'create_shop': 'สร้างร้าน',
     'shop_name': 'ชื่อร้าน',
     'shop_url': 'Url',
+    'bank_name': 'ธนาคาร',
+    'account_no': 'เลขที่บัญชี',
+    'account_name': 'ชื่อบัญชี',
+    'transfer_amount': 'ยอดโอน',
+    'transfer_date': 'วันที่โอน',
+    'time': 'เวลา',
+    'transfer_file': 'หลักฐานการโอน',
+    'save_this_address': 'บันทึกที่อยู่นี้สำหรับใช้ในต่อไป',
+    'bank_info_and_payment': 'ข้อมูลธนาคาร / แจ้งชำระเงิน',
     
     'credit_or_debit_card': 'บัตรเครดิตหรือบัตรเดบิต',
     'cash_on_delivery': 'เก็บเงินปลายทาง',
-    'bank_transfer': 'โอนเงินผ่านธนาคาร',
+    'bank_transfer': 'โอนเงินผ่านบัญชีธนาคาร',
     'prepare_shipment': 'เตรียมการฝากส่ง',    
     'no_item_in_cart': 'ไม่มีรายการสินค้าในรถเข็น',
 
@@ -119,6 +133,7 @@ export const LANG_TH_TRANS = {
     'msg_save_success': 'บันทึกข้อมูลเสร็จสมบูรณ์',
     'msg_update_success': 'แก้ไขข้อมูลเสร็จสมบูรณ์',
     'msg_item_add_to_cart': 'คุณได้ทำการเพิ่มสินค้าจำนวน {0} ชิ้นลงในรถเข็น',
+    'msg_order_is_required': 'กรุณาระบุคำสั่งซื้อ',
 
     'success': 'สำเร็จ',
     'information': 'ข้อมูล',

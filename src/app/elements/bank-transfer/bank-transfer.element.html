@@ -1,0 +1,74 @@
+<div #paymentDialog class="modal" tabindex="-1" role="dialog">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content lg">
+                <form [formGroup]="form" (ngSubmit)="confirm()">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ 'bank_transfer' | translate }}</h5>
+                        <i data-dismiss="modal" aria-label="Close" class="material-icons pointer md-dark">close</i>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input type="text" formControlName="orderNo">
+                            <label class="control-label">{{ 'order_no' | translate }}</label><i class="bar"></i>
+                            <div *ngIf="isFieldValid('orderNo')">
+                                <div class="invalid-feedback" *ngIf="orderNo.errors.required">{{ 'msg_order_is_required' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="text" formControlName="name">
+                                <label class="control-label">{{ 'full_name' | translate }}</label><i class="bar"></i>
+                                <div *ngIf="isFieldValid('name')">
+                                    <div class="invalid-feedback" *ngIf="name.errors.required">{{ 'msg_name_is_required' | translate }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" formControlName="telephone">
+                                <label class="control-label">{{ 'telephone' | translate }}</label><i class="bar"></i>
+                                <div *ngIf="isFieldValid('telephone')">
+                                    <div class="invalid-feedback" *ngIf="telephone.errors.required">{{ 'msg_telephone_is_required' | translate }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="amount">
+                            <label class="control-label">{{ 'transfer_amount' | translate }}</label><i class="bar"></i>
+                            <div *ngIf="isFieldValid('amount')">
+                                <div class="invalid-feedback" *ngIf="amount.errors.required">{{ 'msg_postcode_is_required' | translate }}</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <input type="text" formControlName="tDate">
+                                <label class="control-label">{{ 'transfer_date' | translate }}</label><i class="bar"></i>
+                                <div *ngIf="isFieldValid('tDate')">
+                                    <div class="invalid-feedback" *ngIf="tDate.errors.required">{{ 'msg_name_is_required' | translate }}</div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="text" formControlName="tTime">
+                                <label class="control-label">{{ 'time' | translate }}</label><i class="bar"></i>
+                                <div *ngIf="isFieldValid('tTime')">
+                                    <div class="invalid-feedback" *ngIf="tTime.errors.required">{{ 'msg_telephone_is_required' | translate }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" formControlName="attach">
+                            <label class="control-label">{{ 'transfer_file' | translate }}</label><i class="bar"></i>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="button blue">
+                        <span>{{ 'confirm' | translate }}</span>
+                    </button>
+                        <button type="button" class="button red" data-dismiss="modal">
+                        <span>{{ 'close' | translate }}</span>
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

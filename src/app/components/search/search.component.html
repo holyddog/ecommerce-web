@@ -1,35 +1,22 @@
-<div class="container">
-    <div class="row mb-3 hidden-md-up">
-        <div class="col-md-10 container p-0">
-            <div class="search-bar p-relative">
-                <input class="form-control" placeholder="{{ 'search_for_products' | translate }}" type="text" [(ngModel)]="q" (keypress)="trackQuery($event)" />
-                <button class="d-flex v-center h-center" (click)="search()"><i class="material-icons">search</i></button>
-            </div>
-        </div>
-    </div>
+<div class="container mb-30p">
     <div class="row">
-        <div class="col-md-10 container pt-3 pb-2 paper">
-            <h4>{{(q)? ('results_for' | translate) + ' "' + q + '"': ('no_result' | translate )}}</h4>
-            <div>{{totalProduct}} {{ 'items' | translate }}</div>
-            <div class="row pl-2 pr-2">
-                <div *ngFor="let p of products" class="col-6 col-md-3 p-2">
-                    <a class="product-item" href="/item/{{p.url}}/{{p.id}}">
-                        <div class="pic mb-2">
-                            <img class="mh-100 mw-100" [src]="config.FileUrl + p.picture">
-                        </div>
-                        <div class="name">{{p.name}}</div>
-                        <div class="price text-right txt-red mt-2">฿{{p.price | number: '1.2-2' }}</div>
-                    </a>
-                </div>
-            </div>
-            <div *ngIf="products.length > 0" class="row pl-2 pr-2">
-                <pagination [href]="'/search?q=' + q + '&amp;page='" [total]="totalProduct" [current-page]="currentPage"></pagination>
-            </div>
+        <div class="col-md-12 d-flex h-center">
+            <div class="display-6 p-3">{{ 'search_results_for' | translate }} "{{q}}"</div>
         </div>
     </div>
-    <!-- <div class="sidebar hidden-sm">
-        <div class="paper">
-            <h6 class="widget-title">{{ 'related_category' | translate }}</h6>
+</div>
+<div *ngIf="data" class="container">
+    <div class="row">
+        <div *ngFor="let p of data.data" class="col-sm-6 col-md-3">
+            <a class="paper product" [routerLink]="'item/' + p.url + '/' + p.id">
+                <div class="pic">
+                    <img [src]="config.FileUrl + p.picture" />
+                </div>
+                <div class="info">
+                    <div class="title">{{p.name}}</div>
+                    <div class="price">{{p.price | number: '1.2-2'}} ฿</div>
+                </div>
+            </a>
         </div>
-    </div> -->
+    </div>
 </div>

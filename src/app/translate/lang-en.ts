@@ -3,6 +3,8 @@ export const LANG_EN_TRANS = {
     'login': 'Log In',
     'thailand_post_full_name': 'Thailand Post Company Limited',
     'search_for_products': 'Search for products...',
+    'search_results_for': 'Search results for',
+    'all': 'All',
 
     'product_category': 'CATEGORIES',
     'new_products': 'NEW PRODUCTS',
