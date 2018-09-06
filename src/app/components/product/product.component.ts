@@ -29,7 +29,7 @@ export class ProductComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.forEach((params: Params) => {
-            let id: number = +params['id'];
+            let id: number = +params['id'];rep
             this.productService.findById(id)
                 .then(data => {
                     if (!data.error) {
